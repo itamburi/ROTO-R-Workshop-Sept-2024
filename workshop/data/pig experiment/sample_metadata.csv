@@ -1,0 +1,21 @@
+﻿Sample.ID,Pig.ID,Tissue,Diet
+B1,1,Blood,Normal
+B2,2,Blood,Normal
+B3,3,Blood,Normal
+B4,4,Blood,Normal
+B5,5,Blood,Normal
+B6,6,Blood,High Fat
+B7,7,Blood,High Fat
+B8,8,Blood,High Fat
+B9,9,Blood,High Fat
+B10,10,Blood,High Fat
+U1,1,Urine,Normal
+U2,2,Urine,Normal
+U3,3,Urine,Normal
+U4,4,Urine,Normal
+U5,5,Urine,Normal
+U6,6,Urine,High Fat
+U7,7,Urine,High Fat
+U8,8,Urine,High Fat
+U9,9,Urine,High Fat
+U10,10,Urine,High Fat
