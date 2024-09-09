@@ -1,5 +1,5 @@
-# ROTO Summer Coding Workshop
-# Summer 2023
+# ROTO Coding Workshop
+# Fall 2024
 # Session 1 - *** Basic data types and data structures ***
 
 
@@ -9,8 +9,6 @@
 
 # Go to the following Google Drive link, download the zip file, and upload the zip file to R server
 # https://drive.google.com/drive/folders/1_5a-cJ-1xMuCGiMWsxRdlMB3Jfqq0OR4
-
-
 
 
 #### 0.1 - **** RStudio Interface ****
@@ -73,10 +71,9 @@ value = name1 + age1
 
 
 # Rule about object names: they cannot begin with a number!
-3names = c("Claire", "Tanye", "Ian") # not allowed!
+4names = c("Ian", "Nellie", "Luis", "Negin") # not allowed!
 
-three.names = c("Claire", "Tanye", "Ian")
-
+four.names = c("Ian", "Nellie", "Luis", "Negin")
 
 
 # Rule about R: everything is CASE-SENSITIVE
@@ -98,6 +95,7 @@ sum.age = age1 + age2 # okay :D
 # Vectors are a fundamental data structure in R
 # Vectors are basically lists of information. All items in a vector must be of the same data type (all text or all numbers)
 # You can think of vectors as 1-Dimensional data structures
+
 
 # basic syntax is c( values separated by commas )
 pets = c("cat", "dog", "bird", "hamster", "turtle")
@@ -203,7 +201,7 @@ print(pets)
 
 
 # what happens here?:
-dogs = c("DIRE WOLF", "pomeranian", "bulldog", "chihuahua")
+dogs = c("COYOTE", "pomeranian", "bulldog", "chihuahua")
 
 pets2 = rbind(pets, dogs)
 
@@ -211,7 +209,7 @@ print(pets2)
 
 
 
-# lets remove "dire wolf" from dogs. Its probably not a good pet anyways
+# lets remove "COYOTE" from dogs. Its probably not a good pet anyways
 dogs = dogs[c(2,3,4)]
 print(dogs)
 

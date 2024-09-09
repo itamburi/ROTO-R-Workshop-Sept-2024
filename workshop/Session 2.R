@@ -1,5 +1,5 @@
-# ROTO Summer Coding Workshop
-# Summer 2023
+# ROTO Coding Workshop
+# Fall 2024
 # 
 # Session 2 - *** Working with data frames ***
 

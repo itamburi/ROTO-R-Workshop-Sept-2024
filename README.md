@@ -1,4 +1,4 @@
-# ROTO-R-Workshop-Aug-2023
+# ROTO-R-Workshop-Sept-2024
 ### Tutorial for getting set up with R / RStudio, learning coding fundamentals and basic data analysis!
 
 

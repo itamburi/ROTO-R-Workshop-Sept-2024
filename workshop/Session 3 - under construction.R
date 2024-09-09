@@ -1,5 +1,5 @@
-# ROTO Summer Coding Workshop
-# Summer 2023
+# ROTO Coding Workshop
+# Fall 2024
 # Session 3 - *** Basic data types and data structures ***
 
 
