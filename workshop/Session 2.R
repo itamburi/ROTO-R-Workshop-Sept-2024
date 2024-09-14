@@ -22,8 +22,6 @@ library(ggplot2) # this is a widely used library of functions developed to make 
 
 
 
-
-
 #### 1.0 - **** Reading Data into R ****
 
 # R is a powerful data analysis programming language. But before we can analyze any data, we need to load the data into our R environment
@@ -76,7 +74,6 @@ class(spotify$Copyrights)
 
 
 
-
 # Next, let's investigate the variable Popularity; min, max, range, mean, median
 # Since we have 9999 songs, its going to be hard to get a sense of these metrics just by looking
 # ... so we will use a few functions
@@ -104,9 +101,9 @@ hist(data, breaks = 50)
 #     Hint: will need to use na.rm argument in the functions
 
 
-range.tempo
-#range.energy =
-#range.loudness = 
+range.tempo = max() - min()
+range.energy 
+range.loudness 
   
 
 # (2) Also plot a histogram for each!
@@ -189,16 +186,16 @@ length(unique(spotify$Artist.Names))
 #         ... don't forget na.rm = TRUE argument
 #         ... the and symbol is &
 
-dance.songs = subset( spotify, )
+dance.songs = subset( spotify,  )
 
 
 # (2) Subset spotify into a new df called fire.songs that has the word "Fire" in the Track.Name
-# hint: use grepl() - look around lines 150-160
+# hint: use grepl() - look around lines 140-160
 
-fire.songs = subset( , )
+fire.songs = subset( spotify, )
 
 
-# (3) Select only the following columns from fire.songs and leave the rest out: (1) song name, (2) artist, (3) popularity, (4) tempo, (5) energy
+# (3) SMake a dataframe called fire.songs 2 that contains ONLY the following columns: (1) Track.Name, (2) Artist.Names, (3) Popularity, (4) Tempo, (5) Energy
 
 cols = c("", "", "", "", "", "")
 fire.songs = fire.songs[ , ] # remember [Row, Column]
@@ -206,8 +203,8 @@ fire.songs = fire.songs[ , ] # remember [Row, Column]
 
 # (4) Make a new column in fire.songs called dance.song that is TRUE if the 1st conditions from (1) is met, or FALSE otherwise
 #    (Danceability is greater than the median Danceability):
-
-fire.songs$dance.song = ifelse( , , )
+# recall formant: ifelse(condition, result if TRUE, result if FALSE)
+fire.songs$dance.song = ifelse( , TRUE, FALSE)
 
 
 # (5) Of our 9998 songs in Spotify, how many labels are there?
@@ -341,11 +338,11 @@ record.label.pop = spotify %>%
 
 pop.dua.songs = spotify %>%
   filter( 
-    grepl( , ),
-    Popularity
+    grepl( "", ),
+    Popularity 
   ) %>%
   mutate(
-    Vibration,
+    Vibration  ,
     fast.song = ifelse( , , )
   )
 
@@ -354,13 +351,14 @@ pop.dua.songs = spotify %>%
 
 warner.stats = spotify %>%
   filter(
-  
+    Label == ""
   ) %>%
   group_by(  ) %>%
   summarise(
-    mean.pop
-    mean.dance
+    mean.pop = mean( , ),
+    mean.dance = mean( , )
   )
+
 
 
 

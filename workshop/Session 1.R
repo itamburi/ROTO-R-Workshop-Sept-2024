@@ -18,7 +18,6 @@
 # - cmd + enter / cntrl + enter to execute a line of code; OR Run button at the top of the window
 #       > can also highlight a block of code and execute
 
-#  hashtag/pound in front of the line to comment
 
 print("Hello World!")
 # what happens?
@@ -26,17 +25,17 @@ print("Hello World!")
 
 
 
-
 #### 0.2 - **** Discussion ****
 #
-# (1) What is programming, and what is coding?
+# (1) What is coding? What is programming?
 #
-# (2) What types of tasks do you think require programming and coding? What are some applications?
+# (2) What types of tasks do you think require coding/programming? What are some applications?
+# 
+# (3) What is data? What are some examples you are familiar with? What does it look like and how is it structured?
 #
-# (3) Coding creates instructions for a computer to interpret.
+# ** Coding creates instructions for a computer to interpret.
 #
-# (4) What is data? What are some examples you are familiar with? What does it look like and how is it structured?
-
+### <--- BTW! hashtag/pound in front of the line are ignored by the computer. Useful for comments!
 
 
 
@@ -56,14 +55,14 @@ age1 <- 100
 # there are several data types in R, but the two we encounter most often are "Strings" and "Numeric".
 # These are basically just text and numbers
 
-name2 = "Nick"
-age2 = 50
+name2 = "Nick" # text
+age2 = 50 # number
 
 sum.age = age1 + age2
 
 
 # type ?print() into console
-print(sum.age) # print is a function that prints the values of the specified object
+print(sum.age) # print is an R function/code that prints the values of the specified object
 
 
 # what happens if we try to perform math on different data types?
@@ -120,10 +119,10 @@ integers3[2]
 value = integers3[2] + integers1[5]
 
 
+
 # what happens when we try to mix numeric and string in one vector?
 mix = c("cat", "dog", 4, 5)
 class(mix) # coerces, or "forces" the numerics to strings
-
 
 
 
@@ -151,31 +150,31 @@ print(integers6)
 
 #### *** Exercise 1 - 10 Minutes to practice working with vectors ****
 
+# First run the following two lines
 myvector = c(195:51)
-print(desc)
+print(myvector)
 
 # 1) What is the value at the 50th element/position of this vector? Type the code below. 
 
 
 # 2) Make a new object called sum that is equal to the value at the 50th element plus the 60th.
 #   Then print the value of sum
-sum
-print()
+sum 
+print(sum)
 
 
 # 3) What is the 50th value divided by the last value of the vector?
 #     ... Sure we can see that the last value is 51, but how would you address the object at that specific position?
-# Hint: use the length() function to determine number of the last position!
+# Hint: use the length() function to determine the index of the last position!
 
 # multiple line approach:
 
 value_50th
-value_last
-quotient = value_50th/value_last
+vector_length = length()
+value_last = myvector[]
 
- 
-# OR in one line!
 quotient
+
 
 
 
@@ -216,18 +215,6 @@ print(dogs)
 pets2 = rbind(pets, dogs)
 print(pets2)
 
-
-
-
-
-# We can also build a matrix using the matrix() function, but TBH we don't often have to do this
-
-m = matrix(data = "cat", nrow = 3, ncol = 3) # pay attention to our arguments
-# typing ?matrix() into the console will tell us what the arguments mean
-
-
-sequence = c(1:9)
-m2 = matrix( sequence, 3, 3) # notice the order it fills the matrix m2
 
 
 
@@ -300,12 +287,13 @@ vehicles_per_city[ , ] = 6000 # [ROW, COL]
 # (3) Replace the value for Seattle Motorcycles with 3333
 # ... look at lines 250-265 above
 
+vehicles_per_city[ , ] = 3333 # [ROW, COL]
 
 
-# (4) Replace all values in the COLUMNS Cars and SUVs with 2023 using only one line of code!
+# (4) Replace all values in the COLUMNS Cars and SUVs with 2024 using only one line of code!
 
-
-
+vehicles_per_city[ ,c(1,2)] = 2024
+print(vehicles_per_city)
 
 
 
@@ -354,7 +342,7 @@ print(horsepower)
 # We can make a new column by writing data$newcol = ...
 mtcars$hp.per.lb = mtcars$hp / mtcars$wt
 # Made a new column for horsepower per pound
-
+# note that we always need to address the column in the format dataframe$column
 
 
 # ifelse() - lets see what this function does by typing ?ifelse() in the console
@@ -370,7 +358,8 @@ class(mtcars$high.efficiency) # Logical data type. What is this?
 
 
 
-
+# *** Subset a data frame based on logic conditions ***
+#
 # Let's subset our dataframe for only high efficiency cars!
 #
 # You will later learn many ways to subset a data frame
@@ -383,25 +372,26 @@ class(mtcars$high.efficiency) # Logical data type. What is this?
 subset_df = mtcars[mtcars$high.efficiency == TRUE, ] # recall [row, column] ... the ordering in this way may look counter-intuitive
                                                     # just think "rows where the column high.eff is TRUE"
 
-# (2) Use the subset() function: subset(df, condition)
-subset_df = subset(mtcars, high.efficiency == TRUE) # a bit easier to read
+# (2) Use the subset() function: subset(dataframe, condition)
+subset_df = subset(mtcars, high.efficiency == TRUE)
+# a bit easier to read... we can use this most of the time
 
 
-subset_df = subset(mtcars, cyl != 4)
-subset_df = subset(mtcars, cyl %in% c(4,8) )
+# what happens when we subset mtcars based on each condition below:
+subset_df = subset(mtcars, cyl != 4) # "!=" means "not equal to"
+subset_df = subset(mtcars, cyl %in% c(4,8) ) # %in% means "in the vector"
 # & (and) ; | (OR)
-subset_df = subset(mtcars, mpg > 15 & cyl == 4)
-subset_df = subset(mtcars, mpg > 15 | cyl == 4)
-
+subset_df = subset(mtcars, mpg > 15 & cyl == 4) # & means "and" when we want multiple conditions to all be met
+subset_df = subset(mtcars, mpg > 15 | cyl == 4) # | means "or" when we want at least one of several conditions to be met
 
 
 # What if you wanted to select specific columns and exclude all others?
 subset_df = mtcars[,c("mpg","hp")] # [row, column]
+# use bracket notation df[row,col], and place a vector of the column names in the column slot
 
 
 
-
-#### 1.5 - **** 10 minutes - Practice Example ****
+#### Exercise 3 - **** 10 minutes - Practice Example ****
 
 # load the data frame iris which is built into R
 data(iris) # might take a moment to load
@@ -412,44 +402,69 @@ head(iris)
 # A) How many columns and rows does the iris df have?
 
 
-
-
 # B) Add a column called Petal.Area that is equal to the petal width times the petal length
 #     Multiplication sign is the star symbol:  *
 #     Remember, R is case-sensitive!
-
+names(iris)
 iris$Petal.Area
 
 
 
-
 # C) Make a new df called subset_species that only has the Species "setosa" OR "virginica"
-#   look around lines 283-287 for help
+#   look at lines 382 for help
 
-subset_species = subset( , )
-
+subset_species = subset(iris,  )
 
 
 # D) In the new dataframe from (C):
 # make a new column called Season that is "spring" if the flower Species == "setosa", OR is "fall" if the Species == "virginica"
-#   Look around line 353 above!
+#   Look around line 354 above!
 #   You will probably have to do this in two similar lines of code
-subset_species$Season # = ifelse( test case , result if true, result if false )
-subset_species$Season 
+subset_species$Season = ifelse(  , , NA )
+subset_species$Season = ifelse( , ,  )
 
 
 
 
+#### Session 1 Review ####
+
+
+# *** Vectors: 1-Dimensional data structures in R that is a list of items of the same data type (string or numeric)
+pets = c("cat", "dog", "bird", "hamster", "turtle") # a vector of pets
+
+# two vectors of  integers
+integers1 = c(1, 2, 3, 1, 2) 
+integers2 = c(10, 60, 90, 40, 50)
+
+# when we code math on two vectors, the math is done between matching indicies
+integers3 = integers1 + integers2
+print(integers3)
+
+# we can address values at a specific index of the data frame using bracket notation
+integers3[5]
+
+
+# *** Matrix: 2-Dimentional data structures, or Tables that contain the same data type.
+
+# we can make matrices be stacking vectors
+matrix = rbind(integers1, integers2, integers3) # rbind(stacks vectors of equal length)
+print(matrix)
+
+# we can address the values at a specific position in a matrix with bracket notation
+matrix[2,3] # m[row, column]
 
 
 
+# *** Dataframe: 2D data structure / table that can handle mixed data types
 
+# we can address the column of a dataframe using $ notation: df$colname
+mtcars$cyl # returns a vector!
 
+# we can make new columns by doing math on exisitng columns
+mtcars$hp.per.lb = mtcars$hp / mtcars$wt
 
-
-
-
-
+# we can subset a data frame based on conditions using subset() function
+fastcars = subset(mtcars, hp.per.lb >= 40)
 
 
 
